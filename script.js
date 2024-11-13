@@ -49,16 +49,18 @@ function playButton() {
   goodCon.classList.add("pos_" + randomValue(7));
   badCon.classList.add("pos_" + randomValue(7));
 
+  //add fall
+  goodCon.classList.add("faldGood");
+  badCon.classList.add("faldBad");
+
   randomDelay(goodCon);
   randomDelay(badCon);
 }
 
-//temporary!!!
-goodCon.classList.add("faldGood");
-badCon.classList.add("faldBad");
-
 function clickGood() {
   console.log("goodClick");
+  goodSpri.classList = "";
+
   //add click animation og add pause of event_null
   goodSpri.classList.add("goodClick");
   goodCon.classList.add("paused", "event_null");
@@ -99,6 +101,7 @@ function goodReset() {
 }
 
 badSpri.addEventListener("animationend", badReset);
+badCon.addEventListener("animationend", badReset);
 
 function badReset() {
   //Clear class
