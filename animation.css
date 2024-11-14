@@ -104,3 +104,19 @@
     rotate: -360deg;
   }
 }
+
+.time {
+  animation-name: time_kf;
+  animation-duration: 5s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes time_kf {
+  from {
+  }
+  to {
+    rotate: 360deg;
+  }
+}

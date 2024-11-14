@@ -7,11 +7,12 @@ const goodCon = document.querySelector("#good_container");
 const goodSpri = document.querySelector("#good_sprite");
 const badCon = document.querySelector("#bad_container");
 const badSpri = document.querySelector("#bad_sprite");
+const clockHand = document.querySelector("#clock_hand");
 
 function vises() {
-  //viser points og life
+  //viser points starter timer
   document.querySelector("#point").textContent = point;
-  document.querySelector("#life").textContent = life;
+  clockHand.classList.add("time");
 
   console.log("Hello World");
   //hide Spil intro side
@@ -27,6 +28,12 @@ function vises() {
   //add spin animation
   goodSpri.classList.add("spin_" + randomValue(2));
   badSpri.classList.add("spin_" + randomValue(2));
+
+  //reset life
+  let life = 3;
+  document.querySelector("#life1").classList.remove("gray");
+  document.querySelector("#life2").classList.remove("gray");
+  document.querySelector("#life3").classList.remove("gray");
 
   //Start playButton
   playButton();
@@ -62,12 +69,16 @@ function clickGood() {
   goodSpri.classList = "";
 
   //add click animation og add pause of event_null
-  goodSpri.classList.add("goodClick");
+  goodSpri.classList.add("goodClick", "paper_ball");
   goodCon.classList.add("paused", "event_null");
 
   //minus liv og udskriv
-  life--;
-  document.querySelector("#life").textContent = life;
+  if (life > 0) {
+    document.querySelector("#life" + life).classList.add("gray");
+    life--;
+  } else {
+    endgame();
+  }
 }
 
 function clickBad() {
@@ -118,4 +129,10 @@ function badReset() {
 
 function randomValue(rng) {
   return Math.floor(Math.random() * rng);
+}
+
+clockHand.addEventListener("animationend", endgame);
+
+function endgame() {
+  console.log("game is complete");
 }
