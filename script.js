@@ -2,6 +2,7 @@ window.addEventListener("load", vises);
 
 let point = 0;
 let life = 3;
+let speed = 0;
 
 const goodCon = document.querySelector("#good_container");
 const goodSpri = document.querySelector("#good_sprite");
@@ -54,7 +55,7 @@ function playButton() {
   //start timer
   //start random delay + positioner der leder til elementer falder
   goodCon.classList.add("pos_" + randomValue(7));
-  badCon.classList.add("pos_" + randomValue(7));
+  badCon.classList.add("pos_" + randomValue(7), "speed" + speed);
 
   //add fall
   goodCon.classList.add("faldGood");
@@ -92,6 +93,10 @@ function clickBad() {
   //giv point og udskriv
   point++;
   document.querySelector("#point").textContent = point;
+  if ([2, 4, 6].includes(point)) {
+    console.log("speed up");
+    speed++;
+  }
 }
 
 goodSpri.addEventListener("animationend", goodReset);
@@ -121,8 +126,7 @@ function badReset() {
   //Reset
   badCon.offsetWidth;
   badSpri.offsetWidth;
-  badCon.classList.add("faldBad");
-  badCon.classList.add("pos_" + randomValue(7));
+  badCon.classList.add("faldBad", "speed" + speed, "pos_" + randomValue(7));
   badSpri.classList.add("spin_" + randomValue(2));
   randomDelay(badCon);
 }
@@ -134,5 +138,11 @@ function randomValue(rng) {
 clockHand.addEventListener("animationend", endgame);
 
 function endgame() {
-  console.log("game is complete");
+  if (life == 0) {
+    console.log("Game Over");
+  } else if (point < 5) {
+    console.log("Game Over");
+  } else {
+    console.log("Level Complete!");
+  }
 }

@@ -31,6 +31,18 @@
   animation-timing-function: linear;
   animation-fill-mode: both;
 }
+.speed0 {
+  animation-duration: 2s;
+}
+.speed1 {
+  animation-duration: 1.8s;
+}
+.speed2 {
+  animation-duration: 1.6s;
+}
+.speed3 {
+  animation-duration: 1.4s;
+}
 
 @keyframes faldBad_kf {
   0% {
