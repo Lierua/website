@@ -138,6 +138,21 @@ function randomValue(rng) {
 clockHand.addEventListener("animationend", endgame);
 
 function endgame() {
+  clockHand.classList.add("paused");
+  badCon.classList.add("paused");
+  badSpri.classList.add("paused");
+  goodCon.classList.add("paused");
+  goodSpri.classList.add("paused");
+
+  goodCon.removeEventListener("mousedown", clickGood);
+  badCon.removeEventListener("mousedown", clickBad);
+
+  goodSpri.removeEventListener("animationend", goodReset);
+  goodCon.removeEventListener("animationend", goodReset);
+
+  badSpri.removeEventListener("animationend", badReset);
+  badCon.removeEventListener("animationend", badReset);
+
   if (life == 0) {
     console.log("Game Over");
   } else if (point < 5) {
