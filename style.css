@@ -14,6 +14,7 @@ img {
   width: 100%;
   aspect-ratio: 16/9;
   position: relative;
+  container-type: inline-size;
 }
 #game {
   width: 100%;
@@ -28,7 +29,24 @@ img {
   position: absolute;
   top: 0;
   left: 0;
-  display: none;
+  z-index: 100;
+  top: 30%;
+}
+#start h1 {
+  font-size: 10cqw;
+  margin: 0 auto;
+  text-align: center;
+}
+#start_knap {
+  margin: 0 auto;
+  font-size: 6cqw;
+  border: 5px solid black;
+  margin-top: 1rem;
+  width: 150px;
+  height: 70px;
+  cursor: pointer;
+  text-align: center;
+  padding: 5px;
 }
 #game_over {
   width: 100%;
@@ -36,7 +54,24 @@ img {
   position: absolute;
   top: 0;
   left: 0;
-  display: none;
+  z-index: 100;
+  top: 30%;
+}
+#game_over_text h1 {
+  font-size: 10cqw;
+  margin: 0 auto;
+  text-align: center;
+}
+#retry {
+  margin: 0 auto;
+  font-size: 6cqw;
+  border: 5px solid black;
+  margin-top: 1rem;
+  width: 150px;
+  height: 70px;
+  cursor: pointer;
+  text-align: center;
+  padding: 5px;
 }
 #level_complete {
   width: 100%;
@@ -44,7 +79,24 @@ img {
   position: absolute;
   top: 0;
   left: 0;
-  display: none;
+  z-index: 100;
+  top: 30%;
+}
+#level_complete_text h1 {
+  font-size: 10cqw;
+  margin: 0 auto;
+  text-align: center;
+}
+#retry2 {
+  margin: 0 auto;
+  font-size: 6cqw;
+  border: 5px solid black;
+  margin-top: 1rem;
+  width: 150px;
+  height: 70px;
+  cursor: pointer;
+  text-align: center;
+  padding: 5px;
 }
 #game_background {
   width: 100%;
@@ -80,14 +132,15 @@ img {
   left: 0;
   pointer-events: none;
 }
-#score {
+#point {
   width: 24%;
   aspect-ratio: 400/160;
   position: absolute;
-  top: 67%;
-  left: 9%;
-  background-image: url(svg/ui_points.svg);
+  top: 69%;
+  left: 10%;
+  /* background-image: url(svg/ui_points.svg); */
   background-size: cover;
+  font-size: 5cqw;
 }
 
 #timer {
@@ -107,13 +160,15 @@ img {
   background-size: cover;
 }
 
-#good_container {
+#good_container,
+#good_container2 {
   width: 15%;
   top: -25%;
   aspect-ratio: 245/97;
   position: absolute;
 }
-#good_sprite {
+#good_sprite,
+#good_sprite2 {
   width: 100%;
   height: 100%;
   background-image: url("svg/good_1.svg");
@@ -128,13 +183,15 @@ img {
   background-size: cover;
 }
 
-#bad_container {
+#bad_container,
+#bad_container2 {
   width: 10%;
   top: -30%;
   aspect-ratio: 123/119;
   position: absolute;
 }
-#bad_sprite {
+#bad_sprite,
+#bad_sprite2 {
   width: 100%;
   height: 100%;
   background-image: url("svg/bad_1.svg");
@@ -165,6 +222,9 @@ img {
 
 .event_null {
   pointer-events: none;
+}
+.hide {
+  display: none;
 }
 
 #life {
