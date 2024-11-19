@@ -14,9 +14,6 @@ const clockHand = document.querySelector("#clock_hand");
 
 function vises() {
   //viser points starter timer
-  document.querySelector("#point").textContent = point;
-  clockHand.classList.add("time");
-
   console.log("Hello World");
   //hide andre skærme
   document.querySelector("#level_complete").classList.add("hide");
@@ -41,6 +38,26 @@ function randomDelay(element) {
 }
 
 function playButton() {
+  //reset + add points
+  point = 0;
+  document.querySelector("#point").textContent = point;
+
+  //Start timer
+  clockHand.classList = "";
+  clockHand.offsetWidth;
+  clockHand.classList.add("time");
+  clockHand.addEventListener("animationend", endgame);
+
+  //reset
+  goodCon.classList = "";
+  badCon.classList = "";
+  goodCon2.classList = "";
+  badCon2.classList = "";
+  goodCon.firstElementChild.classList = "";
+  badCon.firstElementChild.classList = "";
+  goodCon2.firstElementChild.classList = "";
+  badCon2.firstElementChild.classList = "";
+
   //hide andre skærme
   document.querySelector("#level_complete").classList.add("hide");
   document.querySelector("#game_over").classList.add("hide");
@@ -66,12 +83,13 @@ function playButton() {
 
   //reset life
   console.log("reset af liv");
-  let life = 3;
+  life = 3;
   document.querySelector("#life1").classList.remove("gray");
   document.querySelector("#life2").classList.remove("gray");
   document.querySelector("#life3").classList.remove("gray");
 
   //start random delay + positioner der leder til elementer falder
+  speed = 0;
   goodCon.classList.add("pos_" + randomValue(7));
   badCon.classList.add("pos_" + randomValue(7), "speed" + speed);
   goodCon2.classList.add("pos_" + randomValue(7));
@@ -80,6 +98,7 @@ function playButton() {
   randomDelay(badCon);
   randomDelay(goodCon2);
   randomDelay(badCon2);
+
   //add fall
   goodCon.classList.add("faldGood");
   badCon.classList.add("faldBad");
@@ -87,18 +106,17 @@ function playButton() {
   badCon2.classList.add("faldBad");
 
   //Event listener for reset
-  goodCon.firstElementChild.addEventListener("animationend", goodReset);
   goodCon.addEventListener("animationend", goodReset);
-
-  badCon.firstElementChild.addEventListener("animationend", badReset);
   badCon.addEventListener("animationend", badReset);
+  goodCon2.addEventListener("animationend", goodReset);
+  badCon2.addEventListener("animationend", badReset);
 }
 
 function clickGood() {
   console.log(this);
   this.firstElementChild.classList = "";
 
-  //add click animation og add pause of event_null
+  //add click animation og add pause + event_null
   this.firstElementChild.classList.add("goodClick", "paper_ball");
   this.classList.add("paused", "event_null");
 
@@ -111,13 +129,15 @@ function clickGood() {
     life--;
     endgame();
   }
+
+  this.addEventListener("animationend", goodReset);
 }
 
 function clickBad() {
   console.log(this);
   this.firstElementChild.classList = "";
 
-  //add click animation og add pause of event_null
+  //add click animation og add pause + event_null
   this.firstElementChild.classList.add("badClick");
   this.classList.add("paused", "event_null");
 
@@ -128,6 +148,7 @@ function clickBad() {
     console.log("speed up");
     speed++;
   }
+  this.addEventListener("animationend", badReset);
 }
 
 function goodReset() {
@@ -163,10 +184,11 @@ function randomValue(rng) {
   return Math.floor(Math.random() * rng);
 }
 
-clockHand.addEventListener("animationend", endgame);
-
 function endgame() {
   clockHand.classList.add("paused");
+
+  //Start timer
+  clockHand.removeEventListener("animationend", endgame);
 
   //End
   badCon.classList = "paused";
@@ -183,7 +205,7 @@ function endgame() {
   badCon.firstElementChild.removeEventListener("animationend", badReset);
   badCon.removeEventListener("animationend", badReset);
 
-  //End
+  //End2
   badCon2.classList = "paused";
   badCon2.firstElementChild.classList = "paused";
   goodCon2.classList = "paused";
