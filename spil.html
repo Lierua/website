@@ -12,6 +12,10 @@
 <body>
 
     <div id="screen">
+        <div id="muteButton" class="icon play">
+            <audio id="background__sound" src="sound/Cafe_Dreams_1.mp3" loop autoplay></audio>
+        </div>
+
         <div id="game">
             <div id="game_background"></div>
             <div id="game_elements">
@@ -50,7 +54,7 @@
         </div>
         <div id="start">
             <div id="start_text">
-                <h1>Study Café</h1>
+                <img class="size_img" src="svg/title.svg" alt="study cafe">
             </div>
             <div id="start_knap">
                 Play
@@ -59,7 +63,7 @@
 
         <div id="game_over">
             <div id="game_over_text">
-                <h1>You Died</h1>
+                <h1>The girl was disturbed</h1>
             </div>
             <div id="retry">
                 Retry
@@ -67,14 +71,22 @@
         </div>
         <div id="level_complete">
             <div id="level_complete_text">
-                <h1>You defeated the evil god</h1>
+                <h1>You kept the peace</h1>
             </div>
             <div id="retry2">
                 Retry
             </div>
         </div>
     </div>
+    <div id="sounds">
+        <!-- TODO: Tilføj audio elementer her -->
 
+        <audio id="bell_sound" src="sound/Bell_01.mp3"></audio>
+        <audio id="door_sound" src="sound/door2_01.mp3"></audio>
+        <audio id="cup_gone_sound_1" src="sound/cup-gone_01.mp3"></audio>
+        <audio id="cup_sound_1" src="sound/cup_1.mp3"></audio>
+        <audio id="paper_sound_1" src="sound/Paper_01.mp3"></audio>
+    </div>
 
     <script src="script.js"></script>
 </body>

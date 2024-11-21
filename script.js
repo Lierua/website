@@ -3,6 +3,15 @@ window.addEventListener("load", vises);
 let point = 0;
 let life = 3;
 let speed = 0;
+let lastPointEarned = false; // Global flag to track point earning
+
+const ost = document.querySelector("#background__sound");
+
+const door = document.querySelector("#door_sound");
+const bell = document.querySelector("#bell_sound");
+const cupGone = document.querySelector("#cup_gone_sound_1");
+const cup = document.querySelector("#cup_sound_1");
+const paper = document.querySelector("#paper_sound_1");
 
 const goodCon = document.querySelector("#good_container");
 const goodCon2 = document.querySelector("#good_container2");
@@ -13,6 +22,10 @@ const badCon2 = document.querySelector("#bad_container2");
 const clockHand = document.querySelector("#clock_hand");
 
 function vises() {
+  document.querySelector("#point").classList.add("hide");
+  document.querySelector("#timer").classList.add("hide");
+  document.querySelector("#life").classList.add("hide");
+
   //viser points starter timer
   console.log("Hello World");
   //hide andre skærme
@@ -38,6 +51,52 @@ function randomDelay(element) {
 }
 
 function playButton() {
+  //sound
+  bell.play();
+  door.play();
+
+  // Hide other screens
+  document.querySelector("#level_complete").classList.add("hide");
+  document.querySelector("#game_over").classList.add("hide");
+  document.querySelector("#start").classList.add("hide");
+
+  // Create and display the countdown element
+  const countdownElement = document.createElement("div");
+  countdownElement.id = "countdown";
+  countdownElement.style.position = "fixed";
+  countdownElement.style.top = "40%";
+  countdownElement.style.left = "50%";
+  countdownElement.style.transform = "translate(-50%, -50%)";
+  countdownElement.style.fontSize = "5rem";
+  countdownElement.style.color = "#fff";
+  countdownElement.style.textAlign = "center";
+  countdownElement.style.zIndex = "1000"; // Ensure it's on top of everything
+  countdownElement.style.padding = "1rem 2rem";
+  document.body.appendChild(countdownElement);
+
+  // Countdown values
+  const countdownValues = ["3", "2", "1", "Start"];
+  let countdownIndex = 0;
+
+  // Start the countdown
+  const countdownInterval = setInterval(() => {
+    if (countdownIndex < countdownValues.length) {
+      countdownElement.textContent = countdownValues[countdownIndex];
+      countdownIndex++;
+    } else {
+      // Remove the countdown and start the game
+      clearInterval(countdownInterval);
+      document.body.removeChild(countdownElement);
+      startGame(); // Call the function to start your game logic
+    }
+  }, 1000); // 1 second interval
+}
+
+function startGame() {
+  document.querySelector("#point").classList.remove("hide");
+  document.querySelector("#timer").classList.remove("hide");
+  document.querySelector("#life").classList.remove("hide");
+
   //reset + add points
   point = 0;
   document.querySelector("#point").textContent = point;
@@ -107,12 +166,15 @@ function playButton() {
 
   //Event listener for reset
   goodCon.addEventListener("animationend", goodReset);
-  badCon.addEventListener("animationend", badReset);
   goodCon2.addEventListener("animationend", goodReset);
+  badCon.addEventListener("animationend", badReset);
   badCon2.addEventListener("animationend", badReset);
 }
 
 function clickGood() {
+  paper.currentTime = 0;
+  paper.play();
+
   console.log(this);
   this.firstElementChild.classList = "";
 
@@ -134,6 +196,9 @@ function clickGood() {
 }
 
 function clickBad() {
+  cupGone.currentTime = 0;
+  cupGone.play();
+
   console.log(this);
   this.firstElementChild.classList = "";
 
@@ -142,9 +207,14 @@ function clickBad() {
   this.classList.add("paused", "event_null");
 
   //giv point og udskriv
+  // Mark that a point was earned
+  lastPointEarned = true;
+
+  // Update points
   point++;
+  console.log("Player earned a point! Current points:", point);
   document.querySelector("#point").textContent = point;
-  if ([2, 4, 6].includes(point)) {
+  if ([7, 14, 20].includes(point)) {
     console.log("speed up");
     speed++;
   }
@@ -178,8 +248,24 @@ function badReset() {
   this.classList.add("faldBad", "speed" + speed, "pos_" + randomValue(7));
   this.firstElementChild.classList.add("spin_" + randomValue(2));
   randomDelay(this);
-}
+  // Check if no point was earned since the last reset
+  if (!lastPointEarned) {
+    cup.currentTime = 0;
+    cup.play();
+    life--;
+    console.log("Player did not earn a point. Life lost. Lives remaining:", life);
 
+    // Update UI to reflect lost life
+    document.querySelector(`#life${life + 1}`).classList.add("gray");
+
+    // Check for game over
+    if (life <= 0) {
+      endgame();
+    }
+  }
+  // Reset the flag for the next cycle
+  lastPointEarned = false;
+}
 function randomValue(rng) {
   return Math.floor(Math.random() * rng);
 }
@@ -231,3 +317,22 @@ function endgame() {
     document.querySelector("#level_complete").classList.remove("hide");
   }
 }
+
+//chatgpt
+
+// Select the mute button and audio element
+const muteButton = document.getElementById("muteButton");
+const backgroundSound = document.getElementById("background__sound");
+
+// Initialize event listener
+muteButton.addEventListener("click", () => {
+  // Toggle the mute state of the audio
+  backgroundSound.muted = !backgroundSound.muted;
+
+  // Update the button's appearance based on the mute state
+  if (backgroundSound.muted) {
+    muteButton.classList.add("muted"); // Add the "muted" class to show the line
+  } else {
+    muteButton.classList.remove("muted"); // Remove the "muted" class to hide the line
+  }
+});
