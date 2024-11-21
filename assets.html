@@ -43,7 +43,6 @@
             <h1 class="textcenter">Assets</h1>
             <div class="decorative-line"></div>
         </div>
-        <div class="air"></div>
         <div class="prevexhi">
             <div class="grid_4_1">
                 <div class="slide">
@@ -61,8 +60,59 @@
                 <div class="slide">
                     <img class="slide-img thumbnail" src="images/5.png" alt="Image 1">
                 </div>
+                <div class="slide">
+                    <img class="slide-img thumbnail" src="svg/background.png" alt="Image 1">
+                </div>
             </div>
         </div>
+        <div class="air"></div>
+        <div class="flexcol headline">
+            <h1 class="textcenter">sounds</h1>
+            <div class="decorative-line"></div>
+        </div>
+        <div class="prevexhi sounds grid_4_1">
+            <div class="sound-control">
+                <button onclick="playSound('bell_sound')">Play Bell</button>
+                <audio id="bell_sound" src="sound/Bell_01.mp3"></audio>
+            </div>
+            <div class="sound-control">
+                <button onclick="playSound('door_sound')">Play Door</button>
+                <audio id="door_sound" src="sound/door2_01.mp3"></audio>
+            </div>
+            <div class="sound-control">
+                <button onclick="playSound('cup_gone_sound_1')">Play Cup Gone 1</button>
+                <audio id="cup_gone_sound_1" src="sound/cup-gone_01.mp3"></audio>
+            </div>
+            <div class="sound-control">
+                <button onclick="playSound('cup_gone_sound_2')">Play Cup Gone 2</button>
+                <audio id="cup_gone_sound_2" src="sound/cup-gone_02.mp3"></audio>
+            </div>
+            <div class="sound-control">
+                <button onclick="playSound('cup_sound_1')">Play Cup 1</button>
+                <audio id="cup_sound_1" src="sound/cup_1.mp3"></audio>
+            </div>
+            <div class="sound-control">
+                <button onclick="playSound('cup_sound_2')">Play Cup 2</button>
+                <audio id="cup_sound_2" src="sound/cup_2.mp3"></audio>
+            </div>
+            <div class="sound-control">
+                <button onclick="playSound('paper_sound_1')">Play Paper 1</button>
+                <audio id="paper_sound_1" src="sound/Paper_01.mp3"></audio>
+            </div>
+
+            <div class="sound-control">
+                <button onclick="playSound('paper_sound_2')">Play Paper 2</button>
+                <audio id="paper_sound_2" src="sound/Paper_02.mp3"></audio>
+            </div>
+
+
+            <div class="sound-control">
+                <button onclick="playSound('Cafe_Dreams_1')">Play OST</button>
+                <audio id="Cafe_Dreams_1" src="sound/Cafe_Dreams_1.mp3"></audio>
+            </div>
+        </div>
+        <div class="air"></div>
+
     </main>
     <script src="java.js"></script>
 </body>

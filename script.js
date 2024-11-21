@@ -9,9 +9,12 @@ const ost = document.querySelector("#background__sound");
 
 const door = document.querySelector("#door_sound");
 const bell = document.querySelector("#bell_sound");
-const cupGone = document.querySelector("#cup_gone_sound_1");
-const cup = document.querySelector("#cup_sound_1");
-const paper = document.querySelector("#paper_sound_1");
+const cupGone1 = document.querySelector("#cup_gone_sound_1");
+const cup1 = document.querySelector("#cup_sound_1");
+const paper1 = document.querySelector("#paper_sound_1");
+const cupGone2 = document.querySelector("#cup_gone_sound_2");
+const cup2 = document.querySelector("#cup_sound_2");
+const paper2 = document.querySelector("#paper_sound_2");
 
 const goodCon = document.querySelector("#good_container");
 const goodCon2 = document.querySelector("#good_container2");
@@ -172,8 +175,13 @@ function startGame() {
 }
 
 function clickGood() {
-  paper.currentTime = 0;
-  paper.play();
+  if (Math.random() < 0.5) {
+    paper1.currentTime = 0;
+    paper1.play();
+  } else {
+    paper2.currentTime = 0;
+    paper2.play();
+  }
 
   console.log(this);
   this.firstElementChild.classList = "";
@@ -181,7 +189,7 @@ function clickGood() {
   //add click animation og add pause + event_null
   this.firstElementChild.classList.add("goodClick", "paper_ball");
   this.classList.add("paused", "event_null");
-
+  console.log(this.firstElementChild);
   //minus liv og udskriv
   if (life > 1) {
     document.querySelector("#life" + life).classList.add("gray");
@@ -196,8 +204,13 @@ function clickGood() {
 }
 
 function clickBad() {
-  cupGone.currentTime = 0;
-  cupGone.play();
+  if (Math.random() < 0.5) {
+    cupGone1.currentTime = 0;
+    cupGone1.play();
+  } else {
+    cupGone2.currentTime = 0;
+    cupGone2.play();
+  }
 
   console.log(this);
   this.firstElementChild.classList = "";
@@ -250,8 +263,13 @@ function badReset() {
   randomDelay(this);
   // Check if no point was earned since the last reset
   if (!lastPointEarned) {
-    cup.currentTime = 0;
-    cup.play();
+    if (Math.random() < 0.5) {
+      cup1.currentTime = 0;
+      cup1.play();
+    } else {
+      cup2.currentTime = 0;
+      cup2.play();
+    }
     life--;
     console.log("Player did not earn a point. Life lost. Lives remaining:", life);
 

@@ -92,3 +92,24 @@ lightbox.addEventListener("click", function (event) {
     lightbox.style.display = "none"; // Hide lightbox if not clicking the image
   }
 });
+
+function playSound(soundId) {
+  const audio = document.getElementById(soundId);
+
+  // Check if the audio is already playing
+  if (!audio.paused) {
+    audio.pause(); // Pause the audio if it's playing
+  } else {
+    // Stop any other audio currently playing
+    const allAudio = document.querySelectorAll("audio");
+    allAudio.forEach((a) => {
+      if (!a.paused) {
+        a.pause();
+        a.currentTime = 0; // Reset to the start
+      }
+    });
+
+    // Play the selected sound
+    audio.play();
+  }
+}

@@ -856,7 +856,9 @@ button.pop-button:active {
 .lightbox-content {
   max-width: 90%;
   max-height: 90%;
-  border-radius: 10px;
+  width: auto;
+  height: auto;
+  border-radius: 5px;
 }
 
 /* Close button for lightbox */
@@ -881,60 +883,8 @@ button.pop-button:active {
   padding: 15px;
 }
 
-.prevex h2 {
-  font-family: Arial, Helvetica, sans-serif;
-  text-transform: uppercase;
-  color: #fff;
-  font-size: 250%;
-  position: absolute;
-  bottom: 15%;
-  text-shadow: 0 0 20px #fff;
-  width: 290px;
-}
-
 /* Base kode er fra ChatGPT (Exhibition-btn) */
 
-.exhibition-btn {
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  color: black;
-  background-color: transparent;
-  border: 2px solid black;
-  cursor: pointer;
-  overflow: hidden;
-  position: relative;
-  transition: transform 0.3s ease;
-  text-shadow: 0 0 0;
-  margin: 0 auto;
-}
-
-.exhibition-btn:hover {
-  transform: scale(1.05);
-}
-
-.exhibition-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #d6516e; /* Color that slides in */
-  z-index: -1;
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
-}
-
-.exhibition-btn:hover::before {
-  transform: translateX(0);
-}
-
-.prevexbox {
-  height: 375px;
-  width: 267px;
-  overflow: hidden;
-}
 .slide {
   height: 190px;
   width: 190px;
@@ -957,4 +907,26 @@ header {
 
 .menumono {
   margin-right: 1.5rem;
+}
+
+.prevexhi {
+  width: 800px;
+  margin: 0 auto;
+}
+
+button {
+  background-color: #dc5172;
+  width: 150px;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background-color 0.3s;
+  margin-bottom: 1rem;
+}
+
+button:hover {
+  background-color: #88144c;
 }
