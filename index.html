@@ -10,13 +10,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="layout.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Pavanam&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Pavanam&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
     <header class="flexrow">
         <div class="logo">
-            <a href="index.html"><img src="images/Group_11.png" alt="logo"></a>
+            <a href="index.html"><img src="images/Group_12.svg" alt="logo"></a>
         </div>
+        <h2 class="marginair textcenter">
+            Passionsite af Kristine Müller
+        </h2>
         <div class="burger-menu" onclick="toggleMenu('menu1')">
             <span></span>
             <span></span>
@@ -25,32 +35,63 @@
         <nav>
             <ul class="menu">
                 <li><a href="index.html">HOME</a></li>
-                <li><a href="spil.html">GAME</a></li>
-                <li><a href="inspiration.html">INSPIRATION</a></li>
-                <li><a href="concept.html">CONCEPT</a></li>
-                <li><a href="assets.html">ASSETS</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <div class="homebanner">
-            <div class="bannertext">
-                <img class="size_img2" src="svg/title.svg" alt="study cafe">
-                <h3 class="undertext">
-                    Help the girl study in peace, by catching the cup before they fall to the ground, but avoid touching
-                    her notes
-                </h3>
+        <div class="grid_1 width80 center">
+            <div class="homebanner air">
+                <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+                    type="module"></script>
+                <dotlottie-player src="https://lottie.host/fdc29093-3526-458b-aa14-4d465af12998/tqHYhGrbZq.lottie"
+                    background="transparent" speed="1" style="width: 100%; height: auto;" loop
+                    autoplay></dotlottie-player>
             </div>
-            <div id="start_knap">
-                <a href="spil.html"> Play</a>
+            <div id="lightbox" class="lightbox">
+                <span class="close">&times;</span>
+                <img class="lightbox-content" id="full-image" src="images/Untitled(1).png" alt="img1">
             </div>
-            <div class="air5"></div>
-            <div class="air5"></div>
-
+            <div id="sec1" class="grid_1-1 air">
+                <div class="grid_1">
+                    <h1>Crafting Timeless Elegance</h1>
+                    <h2>Bespoke Jewelry by Kristine Müller</h2>
+                    <p>With a passion for fine craftsmanship and a modern aesthetic, Kristine Müller creates unique
+                        jewelry that tells your story. At just 27, she combines traditional goldsmithing techniques with
+                        contemporary design, delivering pieces that stand out for their elegance and quality. Every
+                        creation is a testament to her commitment to artistry and individuality.</p>
+                </div>
+                <div class="img1">
+                    <img class="slide-img thumbnail" src="images/1.png" alt="Image 1">
+                </div>
+            </div>
+            <div id="sec2" class="air">
+                <h2 class="marginair">Discover the Art Behind the Sparkle</h2>
+                <div class="grid_1-1-1">
+                    <img class="img2 thumbnail" src="images/2.jpg" alt="Image 1">
+                    <img class="img3 thumbnail" src="images/3.jpg" alt="Image 1">
+                    <img class="img4 thumbnail" src="images/4.jpg" alt="Image 1">
+                    <img class="img5 thumbnail" src="images/5.jpg" alt="Image 1">
+                </div>
+            </div>
+            <div id="sec3" class="air">
+                <h2 class="marginair">The Journey of a Masterpiece</h2>
+                <div class="grid_1-1">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/6f1uHmi1728?si=5d2QkCubmYVNa_KX"
+                            title="YouTube video player"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="borderradius">
+                        <video width="100%" height="99%" src="images/Passions_video_gruppe_13_Oliver.mp4"
+                            controls></video>
+                    </div>
+                </div>
+            </div>
         </div>
-
     </main>
-
+    <footer></footer>
 
     <script src="java.js"></script>
 </body>
